@@ -42,7 +42,7 @@ public class RunnableMultiple implements Runnable {
             sumEvenPositions += digit;
         }
 
-        int difference = sumOddPositions - sumEvenPositions;
+        int difference = Math.abs(sumOddPositions - sumEvenPositions);
 
         if (difference % 11 == 0){
             System.out.println(n + " is a multiple of 11");
