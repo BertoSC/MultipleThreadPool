@@ -21,7 +21,9 @@ public class Main {
             Callable<String> c = new CallableGenerateNumber();
             Future<String> fut = pool1.submit(c);
             try {
-                numbers.add(fut.get());   // recuperamos el resultado y lo añadimos a la lista de números
+                numbers.add(fut.get());
+                // hacerlo de task mejor y hacerlo un set
+                // recuperamos el resultado y lo añadimos a la lista de números
             } catch (InterruptedException | ExecutionException e) {
                 e.printStackTrace();
             }
@@ -43,15 +45,18 @@ public class Main {
         // VERSIÓN CON LOS CALLABLES
 
         ExecutorService pool2 = Executors.newFixedThreadPool(SECOND_THREAD_POOL);
-        for (String num: numbers){
+        for (String num: numbers){   // reacerlo para iterar sobre la lsita de task
             Callable c1 = new CallableMultipleThree(num);
             Future <String> fut1 = pool2.submit(c1);
-            System.out.println(fut1.get());
+
             Callable c2 = new CallableMultipleFive(num);
             Future <String> fut2 = pool2.submit(c2);
-            System.out.println(fut2.get());
+
             Callable c3 = new CallableMultipleEleven(num);
             Future <String> fut3 = pool2.submit(c3);
+
+            System.out.println(fut1.get());   // imprimirlo en un for diverente
+            System.out.println(fut2.get());
             System.out.println(fut3.get());
         }
 
