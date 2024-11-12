@@ -10,7 +10,8 @@ public class CallableGenerateNumber implements Callable {
     public String generateNumber() {
         int size = rm.nextInt(20, 50);
         StringBuilder number = new StringBuilder(size);
-        for (int i = 0; i < size; i++) {
+        number.append(rm.nextInt(1,10));
+        for (int i = 0; i < size-1; i++) {
             number.append(rm.nextInt(9) + 1);
         }
         return number.toString();

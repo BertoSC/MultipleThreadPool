@@ -1,29 +1,10 @@
 package org.example;
 
-public class RunnableMultiple implements Runnable {
+public class RunnableMultipleEleven implements Runnable{
     String numStr;
 
-    public RunnableMultiple(String n) {
-        this.numStr = n;
-    }
-
-    public void checkMultipleThree(String n) {
-        int sumOfDigits = 0;
-
-        for (char c : n.toCharArray()) {
-            sumOfDigits += Character.getNumericValue(c);
-        }
-
-        if (sumOfDigits % 3 == 0) {
-            System.out.println(numStr + " is a multiple of 3");
-        }
-    }
-
-    public void checkMultipleFive(String n) {
-        char lastChar = n.charAt(n.length() - 1);
-        if (lastChar == '5' || lastChar == '0') {
-            System.out.println(numStr + " is a multiple of 5");
-        }
+    public RunnableMultipleEleven(String num){
+        this.numStr=num;
     }
 
     public void checkMultipleEleven(String n) {
@@ -51,8 +32,6 @@ public class RunnableMultiple implements Runnable {
 
     @Override
     public void run() {
-        checkMultipleThree(numStr);
-        checkMultipleFive(numStr);
         checkMultipleEleven(numStr);
     }
 }
