@@ -15,6 +15,7 @@ public class Main {
         // se crea el primer pool para generar números
 
         ExecutorService pool1 = Executors.newFixedThreadPool(1);
+        // Executors.newSingleThreadExecutor()  >>> cuando sea 1, usar este
         Set<Future> numbers = new HashSet(TOTAL_NUMBERS);
         Set<Future> results = new HashSet<>();
 
@@ -24,8 +25,6 @@ public class Main {
             Callable<String> c = new CallableGenerateNumber();
             Future<String> fut = pool1.submit(c);
             numbers.add(fut);
-            // hacerlo de task mejor y hacerlo un set
-            // recuperamos el resultado y lo añadimos a la lista de números
         }
 
         // VERSIÓN CON LOS RUNNABLES
